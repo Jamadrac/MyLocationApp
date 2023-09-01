@@ -1,47 +1,34 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import axios from 'axios';
-import Geolocation from 'react-geolocated';
+import * as React from 'react';
 
-class LocationTracker extends Component {
-  componentDidMount() {
-    // Start watching for location changes
-    this.watchId = Geolocation.watchPosition(
-      this.sendLocationToAPI,
-      (error) => console.error('Error getting location:', error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
-  }
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { LatLng, LeafletView } from 'react-native-leaflet';
 
-  componentWillUnmount() {
-    // Stop watching for location changes when the component unmounts
-    if (this.watchId) {
-      Geolocation.clearWatch(this.watchId);
-    }
-  }
+const DEFAULT_COORDINATE = {
+  lat: 37.78825,
+  lng: -122.4324,
+};
 
-  sendLocationToAPI = (position) => {
-    // Replace 'API_ENDPOINT' with your actual API endpoint
-    axios
-      .post('API_ENDPOINT', {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      })
-      .then((response) => {
-        console.log('Location sent to API:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error sending location:', error);
-      });
-  };
-
-  render() {
-    return (
-      <View>
-        {/* You can display the user's location here if needed */}
-      </View>
-    );
-  }
+export default function App() {
+  return (
+    <SafeAreaView style={styles.root}>
+      <LeafletView
+        mapMarkers={[
+          {
+            position: DEFAULT_COORDINATE,
+            icon: '📍',
+            size: [32, 32],
+          },
+        ]}
+        mapCenterPosition={DEFAULT_COORDINATE}
+      />
+    </SafeAreaView>
+  );
 }
 
-export default LocationTracker;
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
