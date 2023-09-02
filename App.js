@@ -4,11 +4,11 @@ import LocationTracker from './LocationTracker';
 
 function App() {
   return (
-    <View>
+    
   
       <LocationTracker/>
 
-    </View>
+  
   );
 }
 
