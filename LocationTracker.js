@@ -11,7 +11,7 @@ import * as Location from 'expo-location'
 
 
 
-const Home = () => {
+const LocationTracker = () => {
 
     const navigation=useNavigation();
     const[location,setLocation]=useState(null);
@@ -120,4 +120,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default LocationTracker;
