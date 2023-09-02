@@ -1,14 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import LocationTracker from './LocationTracker';
 
 function App() {
   return (
-    
-  
-      <LocationTracker/>
-
-  
+    <NavigationContainer>
+      <LocationTracker />
+    </NavigationContainer>
   );
 }
 
