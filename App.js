@@ -5,7 +5,7 @@ import LocationTracker from './LocationTracker';
 function App() {
   return (
     <View>
-      <Text style={{textAlign:"center", paddingTop:50}}>hello</Text>
+  
       <LocationTracker/>
 
     </View>
