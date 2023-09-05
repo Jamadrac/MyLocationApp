@@ -19,7 +19,7 @@ const LocationTracker = () => {
   // Function to send location data to the server
   const sendLocationData = async (latitude, longitude) => {
     const buildNumber = 'jamadrac_test_device'; // Replace with the actual device build number
-    const endpoint = 'http://127.0.0.1:8000/api/receive-location/'; // Replace with your server's endpoint URL
+    const endpoint = 'http://192.168.191.45:7575//api/receive-location/'; // Replace with your server's endpoint URL
 
     try {
       const response = await fetch(endpoint, {
@@ -64,7 +64,7 @@ const LocationTracker = () => {
         sendLocationData(currentLocation.coords.latitude, currentLocation.coords.longitude);
 
         // Schedule the next update in 10 seconds
-        setTimeout(sendLocationPeriodically, 10000);
+        setTimeout(sendLocationPeriodically, 1000);
       };
 
       sendLocationPeriodically(); // Start sending location data immediately
